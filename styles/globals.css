@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+body {
+  font-family: "Pretendard-Regular";
+}
+
+.style {
+  stroke-linejoin: round;
+  stroke: #ffffff;
+  stroke-width: 2;
+  fill: #e2e8f0;
+}
+.style:hover {
+  stroke-linejoin: round;
+  stroke: #ffffff;
+  stroke-width: 2;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.styleClick {
+  stroke-linejoin: round;
+  stroke: #ffffff;
+  stroke-width: 2;
+  fill: #7dd3fc;
+  cursor: pointer;
+}
+
+.TEXT {
+  font-family: "Pretendard-Regular";
+  fill: #000;
+  font-size: 14px;
+  text-anchor: middle;
+  alignment-baseline: middle;
+}
