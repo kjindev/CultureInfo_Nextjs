@@ -10,29 +10,55 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
+  overflow-x: hidden;
   font-family: "Pretendard-Regular";
+}
+
+#scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+#scroll::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 5px;
+}
+#scroll::-webkit-scrollbar-track {
+  background-color: #d1d5db;
+  border-radius: 5px;
+}
+
+.title-font {
+  font-family: "GmarketSansMedium";
 }
 
 .style {
   stroke-linejoin: round;
   stroke: #ffffff;
   stroke-width: 2;
-  fill: #e2e8f0;
+  fill: #e5e7eb;
 }
 .style:hover {
   stroke-linejoin: round;
   stroke: #ffffff;
   stroke-width: 2;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.9;
 }
 .styleClick {
   stroke-linejoin: round;
   stroke: #ffffff;
   stroke-width: 2;
-  fill: #7dd3fc;
+  fill: #bef264;
   cursor: pointer;
 }
 

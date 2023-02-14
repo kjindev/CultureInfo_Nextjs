@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useQuery } from "react-query";
 
 export default function Map() {
   interface CultureArrayType {
@@ -16,6 +17,38 @@ export default function Map() {
   const year = date.getFullYear();
   const month = ("0" + (date.getMonth() + 1)).slice(-2);
   const day = ("0" + date.getDate()).slice(-2);
+
+  const query = useQuery("seoul", async () =>
+    (
+      await fetch(
+        ` http://openapi.seoul.go.kr:8088/${process.env.NEXT_PUBLIC_API_KEY}/json/culturalEventInfo/1/300/`
+      )
+    ).json()
+  );
+
+  useEffect(() => {
+    if (query.status === "success") {
+      setCultureData(query.data.culturalEventInfo.row);
+    }
+  }, [query.status]);
+
+  useEffect(() => {
+    if (cultureData[0]) {
+      let cnt: number = 0;
+      let list: string[] = [];
+      for (let i = 0; i < 300; i++) {
+        if (
+          cultureData[i].GUNAME === "중구" &&
+          cultureData[i].DATE.slice(11, 21) >= `${year}-${month}-${day}`
+        ) {
+          cnt = cnt + 1;
+          list.push(cultureData[i].TITLE);
+        }
+      }
+      setCultureCount(cnt);
+      setCultureList(list);
+    }
+  }, [cultureData]);
 
   useEffect(() => {
     //console.log(cultureCount);
@@ -48,7 +81,7 @@ export default function Map() {
   };
 
   return (
-    <div className="w-[100%] md:h-[100vh] flex flex-col md:flex-row justify-center items-center">
+    <div className="bg-black text-white w-[100%] md:h-[100vh] flex flex-col md:flex-row justify-center items-center">
       <div
         onClick={handleMapClick}
         ref={dataRef}
@@ -305,7 +338,7 @@ export default function Map() {
         <div className="text-center text-2xl m-3">
           {name}의 문화행사 | {cultureCount}개
         </div>
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden" id="scroll">
           {cultureList.length === 0 ? (
             <div className="text-center">문화행사가 없습니다</div>
           ) : (
