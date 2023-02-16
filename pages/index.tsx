@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Foryou from "./Foryou";
 import Introduction from "./Introduction";
 import Main from "./Main";
@@ -15,18 +15,92 @@ export default function Home() {
     setMouseY(event.clientY + scrollY);
   };
 
+  useEffect(() => {
+    if (scrollRef) {
+      let observer: IntersectionObserver;
+      observer = new IntersectionObserver(
+        ([event]) => {
+          const target = event.target as HTMLElement;
+          if (event.isIntersecting) {
+            setNavName(target.id);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(scrollRef.current[0] as Element);
+    }
+  }, [scrollRef]);
+
+  useEffect(() => {
+    if (scrollRef) {
+      let observer: IntersectionObserver;
+      observer = new IntersectionObserver(
+        ([event]) => {
+          const target = event.target as HTMLElement;
+          if (event.isIntersecting) {
+            setNavName(target.id);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(scrollRef.current[1] as Element);
+    }
+  }, [scrollRef]);
+
+  useEffect(() => {
+    if (scrollRef) {
+      let observer: IntersectionObserver;
+      observer = new IntersectionObserver(
+        ([event]) => {
+          const target = event.target as HTMLElement;
+          if (event.isIntersecting) {
+            setNavName(target.id);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(scrollRef.current[2] as Element);
+    }
+  }, [scrollRef]);
+
+  useEffect(() => {
+    if (scrollRef) {
+      let observer: IntersectionObserver;
+      observer = new IntersectionObserver(
+        ([event]) => {
+          const target = event.target as HTMLElement;
+          if (event.isIntersecting) {
+            setNavName(target.id);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(scrollRef.current[3] as Element);
+    }
+  }, [scrollRef]);
+
+  const handleScrollView = (event: React.MouseEvent<HTMLElement>) => {
+    const target = event.target as HTMLElement;
+    const name = target.innerText;
+    const category = {
+      MAIN: 0,
+      INTRO: 1,
+      "FOR YOU": 2,
+      SEARCH: 3,
+    };
+    if (
+      name === "MAIN" ||
+      name === "INTRO" ||
+      name === "FOR YOU" ||
+      name === "SEARCH"
+    ) {
+      scrollRef.current[category[name]]?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="relative" onMouseMove={mouseMoving}>
-      {/*<div
-        className="w-[100px] h-[100px] rounded-full bg-violet-400 opacity-75"
-        style={{
-          position: "absolute",
-          top: `${mouseY}px`,
-          left: `${mouseX}px`,
-          transform: `translate(-50%, -50%)`,
-        }}
-      ></div>*/}
-      <NavBar />
+      <NavBar navName={navName} handleScrollView={handleScrollView} />
       <div ref={(el) => (scrollRef.current[0] = el)} id="main">
         <Main />
       </div>

@@ -67,21 +67,21 @@ body {
 .style {
   stroke-linejoin: round;
   stroke: #ffffff;
-  stroke-width: 2;
+  stroke-width: 1;
   fill: #000000;
 }
 .style:hover {
   stroke-linejoin: round;
   stroke: #ffffff;
-  stroke-width: 2;
+  stroke-width: 1;
   cursor: pointer;
-  fill: #d946ef;
+  fill: #e04df7;
 }
 .styleClick {
   stroke-linejoin: round;
   stroke: #ffffff;
   stroke-width: 2;
-  fill: #d946ef;
+  fill: #e04df7;
   cursor: pointer;
 }
 

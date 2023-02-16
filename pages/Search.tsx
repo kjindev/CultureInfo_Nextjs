@@ -10,7 +10,6 @@ export default function Map() {
 
   const dataRef = useRef<HTMLInputElement>(null);
   const [cultureData, setCultureData] = useState<CultureArrayType[]>([]);
-  const [cultureCount, setCultureCount] = useState(0);
   const [cultureList, setCultureList] = useState<string[]>([]);
   const [name, setName] = useState("중구");
   const date = new Date();
@@ -34,25 +33,18 @@ export default function Map() {
 
   useEffect(() => {
     if (cultureData[0]) {
-      let cnt: number = 0;
       let list: string[] = [];
       for (let i = 0; i < 300; i++) {
         if (
           cultureData[i].GUNAME === "중구" &&
           cultureData[i].DATE.slice(11, 21) >= `${year}-${month}-${day}`
         ) {
-          cnt = cnt + 1;
           list.push(cultureData[i].TITLE);
         }
       }
-      setCultureCount(cnt);
       setCultureList(list);
     }
   }, [cultureData]);
-
-  useEffect(() => {
-    //console.log(cultureCount);
-  }, [cultureCount]);
 
   const handleMapClick = (event: React.MouseEvent<HTMLElement>) => {
     const targetElement = event.target as HTMLDivElement;
@@ -64,18 +56,17 @@ export default function Map() {
       }
       targetElement.classList.add("styleClick");
       setName(targetElement.dataset.name);
-      let cnt = 0;
+
       let list: string[] = [];
       for (let i = 0; i < 300; i++) {
         if (
           targetElement.dataset.name === cultureData[i].GUNAME &&
           cultureData[i].DATE.slice(11, 21) >= `${year}-${month}-${day}`
         ) {
-          cnt = cnt + 1;
           list.push(cultureData[i].TITLE);
         }
       }
-      setCultureCount(cnt);
+
       setCultureList(list);
     }
   };
@@ -335,9 +326,7 @@ export default function Map() {
         </svg>
       </div>
       <div className="flex flex-col w-[80%] h-[70vh] md:w-[30%] md:h-[50vh]">
-        <div className="text-center text-2xl m-3">
-          {name}의 문화행사 | {cultureCount}개
-        </div>
+        <div className="text-center text-2xl m-3">{name}의 문화행사</div>
         <div className="overflow-x-hidden" id="scroll">
           {cultureList.length === 0 ? (
             <div className="text-center">문화행사가 없습니다</div>
