@@ -30,10 +30,9 @@ export default function Main() {
   }, []);
 
   return (
-    <div className="bg-black text-white w-[100%] h-[100vh] flex items-center">
-      <div className="border border-black border-r-white w-[3%] h-[100vh] fixed z-[1]"></div>
-      <div className="ml-[5%] p-7">
-        <div className="title-font text-7xl">
+    <div className="text-center bg-black text-white w-[100%] h-[100vh] flex items-center justify-center">
+      <div className="p-7">
+        <div className="title-font text-5xl md:text-6xl lg:text-7xl">
           <div>
             Art is{" "}
             <span ref={neonRef} className="italic text-black">
@@ -42,9 +41,11 @@ export default function Main() {
           </div>
           <div>you can get away with.</div>
         </div>
-        <div ref={fadeinRef} className="mt-12 invisible">
-          <div className="bg-fuchsia-400 w-[100px] h-[10px] mb-3"></div>
-          <div className="w-[65%] text-sm text-justify">
+        <div
+          ref={fadeinRef}
+          className="px-[10%] md:px-[15%] lg:px-[20%] mt-12 invisible"
+        >
+          <div className="text-sm text-center">
             우리는 오늘도 일상을 살아냅니다. 반복되는 하루, 반복되는 고민,
             반복되는 지겨움 속에서 숨 돌릴 곳을 찾는 사람들. 이런 우리를
             일상에서 벗어나게 해주는 모든 것은 예술이 됩니다. 누군가에게는 추억,

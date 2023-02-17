@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
 
-export default function Map() {
-  interface CultureArrayType {
-    GUNAME: string;
-    TITLE: string;
-    DATE: string;
-  }
+interface CultureArrayType {
+  GUNAME: string;
+  TITLE: string;
+  DATE: string;
+}
 
+export default function Map() {
   const dataRef = useRef<HTMLInputElement>(null);
   const [cultureData, setCultureData] = useState<CultureArrayType[]>([]);
   const [cultureList, setCultureList] = useState<string[]>([]);
