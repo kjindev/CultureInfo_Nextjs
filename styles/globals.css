@@ -24,8 +24,18 @@ body {
   font-family: "Pretendard-Regular";
 }
 
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink-effect 1s step-end infinite;
+}
+
 ::selection {
-  background: #e879f9;
+  background: #d884fc;
   color: #000000;
 }
 
@@ -64,6 +74,19 @@ body {
   }
 }
 
+.moving-effect {
+  animation: moving 0.3s linear forwards;
+}
+
+@keyframes moving {
+  0% {
+    transform: translate(0, 100%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 .style {
   stroke-linejoin: round;
   stroke: #ffffff;
@@ -75,13 +98,13 @@ body {
   stroke: #ffffff;
   stroke-width: 1;
   cursor: pointer;
-  fill: #e04df7;
+  fill: #d884fc;
 }
 .styleClick {
   stroke-linejoin: round;
   stroke: #ffffff;
   stroke-width: 2;
-  fill: #e04df7;
+  fill: #d884fc;
   cursor: pointer;
 }
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
-import { AiOutlineReload } from "react-icons/ai";
 
 interface CultureArrayType {
   MAIN_IMG: string;
@@ -17,7 +16,7 @@ export default function Foryou() {
 
   useEffect(() => {
     if (query?.status === "success" && cultureList.length === 0) {
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         cultureList.push(
           query.data.culturalEventInfo.row[Math.floor(Math.random() * 300)]
         );
@@ -48,10 +47,10 @@ export default function Foryou() {
           <img
             loading="lazy"
             src={item.MAIN_IMG}
-            className="w-[70%] h-[50%] object-cover"
+            className="w-[200px] h-[300px] object-cover"
           />
-          <div>{item.TITLE}</div>
-          <div>{item.PLACE}</div>
+          {/*<div>{item.TITLE}</div>
+          <div>{item.PLACE}</div>*/}
         </div>
       ))}
     </div>
